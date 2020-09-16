@@ -1,0 +1,5 @@
+It uses Visual studio 2012 or higher so if you want to build your system have visual studio 2012 or higher 2019 is better.
+extract include/armadillo_bits.rar
+If you not have visual studio then just use builded in python. I have already compiled for windows 64 bit
+import midasml2.midasml2
+and code here
