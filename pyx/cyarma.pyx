@@ -64,8 +64,25 @@ cdef extern from "armadillo" namespace "arma" nogil:
         double * memptr() nogil
         void raw_print(char*) nogil
         void raw_print() nogil
-        
-
+    cdef cppclass colvec:
+        colvec(double * aux_mem, int number_of_elements, bool copy_aux_mem, bool strict) nogil
+        colvec(double* aux_mem,int number_of_elements) nogil
+        int n_elem
+        double& operator[](int)
+        double& at(int)
+        colvec operator%(colvec)
+        colvec operator+(colvec)
+        colvec operator/(colvec)
+        colvec operator*(colvec)
+        colvec operator-(colvec)
+        colvec operator%(double)
+        colvec operator+(double)
+        colvec operator/(double)
+        colvec operator*(double)
+        colvec operator-(double)
+        double* memptr()
+        void raw_print(char*) nogil
+        void raw_print() nogil
     # vector class (double)
     cdef cppclass vec:
         vec(double * aux_mem, int number_of_elements, bool copy_aux_mem, bool strict) nogil
@@ -89,7 +106,8 @@ cdef extern from "armadillo" namespace "arma" nogil:
         double * memptr()
         void raw_print(char*) nogil
         void raw_print() nogil
-
+    cdef cppclass colvec:
+       colvec(int number_of_elements,bool copy_aux_memory,bool strict) nogil
     # Armadillo Linear Algebra tools
     cdef bool chol(mat R, mat X) # preallocated result
     cdef mat chol(mat X) # new result
@@ -112,6 +130,11 @@ cdef extern from "armadillo" namespace "arma" nogil:
 
 
 ##### Tools to convert numpy arrays to armadillo arrays ######
+cdef colvec * numpy_to_colvec(np.ndarray[np.double_t,ndim=1] X):
+    if not X.flags.f_contiguous:
+        X=X.copy(order="F")
+    cdef colvec *ax=new colvec(<double*>X.data,X.shape[0],False,True)
+    return ax
 cdef mat * numpy_to_mat(np.ndarray[np.double_t, ndim=2] X):
     if not X.flags.f_contiguous:
         X = X.copy(order="F")
