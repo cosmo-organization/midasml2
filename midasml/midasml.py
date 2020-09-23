@@ -21,7 +21,7 @@ def lin_solver_lam_grid(
         _X, _Y, _index, _nrow, _ncol, _numGroup,
         _beta, _rangeGroupInd, _groupLen, _lambda1,
         _lambda2, _innerIter, _thresh, _ldot, _nullBeta,
-        _gamma, _eta, _betaIsZero, 4, _isActive, _useGroup,
+        _gamma, _eta, _betaIsZero, _groupChange, _isActive, _useGroup,
         _step, _reset
     )
 
