@@ -12,7 +12,9 @@ def build_for_windows():
     
     
 def build_for_mac():
-    print("Building for Mac")
+    print("Starting build for Mac")
+    os.system("python3 mac/setup.py build_ext --inplace")
+    os.system("mv *.dylib midasml2/")
 if platform.system() == 'Linux':
     build_for_linux()
 elif platform.system() == 'Windows':
