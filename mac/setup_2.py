@@ -2,6 +2,7 @@ from setuptools import Extension,setup
 from Cython.Build import cythonize
 import numpy as np
 import os
+os.environ['LDFLAGS'] = '-framework CoreFoundation -framework SystemConfiguration -framework Accelerate'
 print("If you don't have lapack and blas then need to install lapack and blas")
 print("If not builded failed then use command to install some stuff")
 print("To install lapack use command 'brew install lapack'")
