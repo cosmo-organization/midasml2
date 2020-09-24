@@ -18,7 +18,7 @@ setup(
               'src/ld_estim.cpp'
               ],
           language='c++',
-	  define_macros=[("DARMA_DONT_USE_WRAPPER")],
+	  define_macros=[("NPY_NO_DEPRECATED_API", "DARMA_DONT_USE_WRAPPER")],
           extra_link_args=['-framework Accelerate']
 	  )
 	),
