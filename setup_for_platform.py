@@ -13,6 +13,8 @@ def build_for_windows():
     
 def build_for_mac():
     print("Starting build for Mac")
+    os.system("brew install lapack")
+    os.system("brew install openblas")
     os.system("python3 mac/setup.py build_ext --inplace")
     os.system("mv *.so midasml2/")
 if platform.system() == 'Linux':
