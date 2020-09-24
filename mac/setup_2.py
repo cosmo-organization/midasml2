@@ -18,7 +18,7 @@ setup(
               'src/ld_estim.cpp'
               ],
           language='c++',
-	  extra_compile_args=['-w','-DARMA_DONT_USE_WRAPPER'],
+	  define_macros=[("DARMA_DONT_USE_WRAPPER")],
           extra_link_args=['-framework Accelerate']
 	  )
 	),
